@@ -12,7 +12,7 @@ var Comment = React.createClass({
   render: function render() {
     return React.createElement(
       'div',
-      null,
+      { className: 'Comment' },
       React.createElement(
         'h4',
         null,
@@ -41,7 +41,7 @@ var CommentList = React.createClass({
 
     return React.createElement(
       'div',
-      null,
+      { className: 'CommentList' },
       commentNodes
     );
   }
@@ -79,7 +79,7 @@ var CommentForm = React.createClass({
   render: function render() {
     return React.createElement(
       'form',
-      { onSubmit: this.handleSubmit },
+      { onSubmit: this.handleSubmit, className: 'CommentForm' },
       React.createElement(
         'div',
         { className: 'row' },
@@ -136,14 +136,13 @@ var CommentBox = React.createClass({
   render: function render() {
     return React.createElement(
       'div',
-      null,
+      { className: 'CommentBox' },
       React.createElement(
         'h1',
         null,
         'Comment Box'
       ),
       React.createElement(CommentList, { data: this.state.data }),
-      React.createElement('hr', null),
       React.createElement(CommentForm, { onCommentSubmit: this.handleCommentSubmit })
     );
   }

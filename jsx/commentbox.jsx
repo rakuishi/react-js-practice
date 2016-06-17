@@ -10,7 +10,7 @@ var data = [
 var Comment = React.createClass({
   render: function() {
     return (
-      <div>
+      <div className="Comment">
         <h4>{this.props.author}</h4>
         <p>{this.props.children}</p>
       </div>
@@ -29,7 +29,7 @@ var CommentList = React.createClass({
     });
 
     return (
-      <div>
+      <div className="CommentList">
         {commentNodes}
       </div>
     );
@@ -65,7 +65,7 @@ var CommentForm = React.createClass({
 
   render: function() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="CommentForm">
         <div className="row">
           <div className="six columns">
             <input
@@ -114,10 +114,9 @@ var CommentBox = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="CommentBox">
         <h1>Comment Box</h1>
         <CommentList data={this.state.data} />
-        <hr />
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
     );
