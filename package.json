@@ -4,7 +4,8 @@
   "description": "react-js-practice",
   "main": "index.js",
   "scripts": {
-    "watch": "watchify -t babelify main.js -o bundle.js"
+    "server": "php -S localhost:8080 -t .",
+    "commentbox": "open http://localhost:8080/commentbox.html & npm run server & watchify -t babelify ./jsx/commentbox.jsx -o ./js/commentbox.js"
   },
   "author": "rakuishi",
   "license": "ISC",

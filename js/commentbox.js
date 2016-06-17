@@ -1,15 +1,159 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-// main.js
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+var data = [{ id: 1, author: "Pete Hunt", text: "This is one comment." }, { id: 2, author: "Jordan Walke", text: "This is another comment." }];
+
+var Comment = React.createClass({
+  displayName: 'Comment',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'h4',
+        null,
+        this.props.author
+      ),
+      React.createElement(
+        'p',
+        null,
+        this.props.children
+      )
+    );
+  }
+});
+
+var CommentList = React.createClass({
+  displayName: 'CommentList',
+
+  render: function render() {
+    var commentNodes = this.props.data.map(function (comment) {
+      return React.createElement(
+        Comment,
+        { author: comment.author, key: comment.id },
+        comment.text
+      );
+    });
+
+    return React.createElement(
+      'div',
+      null,
+      commentNodes
+    );
+  }
+});
+
+var CommentForm = React.createClass({
+  displayName: 'CommentForm',
+
+  getInitialState: function getInitialState() {
+    return {
+      author: '',
+      text: ''
+    };
+  },
+
+  handleAuthorChange: function handleAuthorChange(e) {
+    this.setState({ author: e.target.value });
+  },
+
+  handleTextChange: function handleTextChange(e) {
+    this.setState({ text: e.target.value });
+  },
+
+  handleSubmit: function handleSubmit(e) {
+    e.preventDefault();
+    var author = this.state.author.trim();
+    var text = this.state.text.trim();
+    if (!text || !author) {
+      return;
+    }
+    this.props.onCommentSubmit({ author: author, text: text });
+    this.setState({ author: '', text: '' });
+  },
+
+  render: function render() {
+    return React.createElement(
+      'form',
+      { onSubmit: this.handleSubmit },
+      React.createElement(
+        'div',
+        { className: 'row' },
+        React.createElement(
+          'div',
+          { className: 'six columns' },
+          React.createElement('input', {
+            type: 'text',
+            placeholder: 'Your name',
+            value: this.state.author,
+            onChange: this.handleAuthorChange,
+            className: 'u-full-width'
+          })
+        ),
+        React.createElement(
+          'div',
+          { className: 'six columns' },
+          React.createElement('input', {
+            type: 'text',
+            placeholder: 'Say something...',
+            value: this.state.text,
+            onChange: this.handleTextChange,
+            className: 'u-full-width'
+          })
+        )
+      ),
+      React.createElement('input', {
+        type: 'submit',
+        value: 'Post',
+        className: 'button-primary'
+      })
+    );
+  }
+});
+
+var CommentBox = React.createClass({
+  displayName: 'CommentBox',
+
+  getInitialState: function getInitialState() {
+    return { data: [] };
+  },
+
+  componentDidMount: function componentDidMount() {
+    this.setState({ data: this.props.data });
+  },
+
+  handleCommentSubmit: function handleCommentSubmit(comment) {
+    var comments = this.state.data;
+    comment.id = Date.now();
+    var newComments = comments.concat([comment]);
+    this.setState({ data: newComments });
+  },
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'h1',
+        null,
+        'Comment Box'
+      ),
+      React.createElement(CommentList, { data: this.state.data }),
+      React.createElement('hr', null),
+      React.createElement(CommentForm, { onCommentSubmit: this.handleCommentSubmit })
+    );
+  }
+});
+
 ReactDOM.render(React.createElement(
-  'h1',
-  null,
-  'Hello, world!'
-), document.getElementById('example'));
+  'div',
+  { className: 'container' },
+  React.createElement(CommentBox, { data: data })
+), document.getElementById('content'));
 
 },{"react":167,"react-dom":2}],2:[function(require,module,exports){
 'use strict';
