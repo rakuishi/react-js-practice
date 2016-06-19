@@ -8,7 +8,8 @@
     "comment-box": "open http://localhost:8080/comment-box.html & npm run server & watchify -t babelify ./jsx/comment-box.jsx -o ./js/comment-box.js",
     "product-table": "open http://localhost:8080/product-table.html & npm run server & watchify -t babelify ./jsx/product-table.jsx -o ./js/product-table.js",
     "component-lifecycle": "open http://localhost:8080/component-lifecycle.html & npm run server & watchify -t babelify ./jsx/component-lifecycle.jsx -o ./js/component-lifecycle.js",
-    "ajax": "open http://localhost:8080/ajax.html & npm run server & watchify -t babelify ./jsx/ajax.jsx -o ./js/ajax.js"
+    "ajax": "open http://localhost:8080/ajax.html & npm run server & watchify -t babelify ./jsx/ajax.jsx -o ./js/ajax.js",
+    "promise": "open http://localhost:8080/promise.html & npm run server & watchify -t babelify ./jsx/promise.jsx -o ./js/promise.js"
   },
   "author": "rakuishi",
   "license": "ISC",
