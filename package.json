@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "php -S localhost:8080 -t .",
-    "commentbox": "open http://localhost:8080/commentbox.html & npm run server & watchify -t babelify ./jsx/commentbox.jsx -o ./js/commentbox.js"
+    "comment-box": "open http://localhost:8080/comment-box.html & npm run server & watchify -t babelify ./jsx/comment-box.jsx -o ./js/comment-box.js"
   },
   "author": "rakuishi",
   "license": "ISC",

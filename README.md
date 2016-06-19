@@ -4,5 +4,5 @@
 
 ```
 $ npm install
-$ npm run commentbox
+$ npm run comment-box
 ```
