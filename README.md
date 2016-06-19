@@ -4,7 +4,7 @@
 
 ```
 $ npm install
-$ npm run <comment-box|product-table>
+$ npm run start
 ```
 
 ## Refs
