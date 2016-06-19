@@ -6,7 +6,8 @@
   "scripts": {
     "server": "php -S localhost:8080 -t .",
     "comment-box": "open http://localhost:8080/comment-box.html & npm run server & watchify -t babelify ./jsx/comment-box.jsx -o ./js/comment-box.js",
-    "product-table": "open http://localhost:8080/product-table.html & npm run server & watchify -t babelify ./jsx/product-table.jsx -o ./js/product-table.js"
+    "product-table": "open http://localhost:8080/product-table.html & npm run server & watchify -t babelify ./jsx/product-table.jsx -o ./js/product-table.js",
+    "component-lifecycle": "open http://localhost:8080/component-lifecycle.html & npm run server & watchify -t babelify ./jsx/component-lifecycle.jsx -o ./js/component-lifecycle.js"
   },
   "author": "rakuishi",
   "license": "ISC",
