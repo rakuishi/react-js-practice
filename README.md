@@ -4,5 +4,5 @@
 
 ```
 $ npm install
-$ npm run comment-box
+$ npm run <comment-box|product-table>
 ```
